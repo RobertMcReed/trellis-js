@@ -1,0 +1,121 @@
+:root {
+  --bg-color: beige;
+  --btn: 5vw;
+  --q-btn: calc(var(--btn) / 2);
+  --trellis-width: calc(var(--btn) * 13.5);
+  --trellis-height: calc(var(--btn) * 6.75);
+  --trellis-border-rad: calc(var(--trellis-width) * 0.03);
+  --trellis-nub-height: var(--q-btn);
+  --trellis-nub-width: calc(var(--trellis-width) / 3);
+  --trellis-nub-out: calc(var(--q-btn) / 2);
+  --trellis-nub-in: calc(var(--trellis-nub-out));
+}
+
+body {
+  background: var(--bg-color);
+}
+
+#canvas {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-color);
+}
+
+#trellis {
+  position: relative;
+  background: black;
+  width: var(--trellis-width);
+  height: var(--trellis-height);
+  border-bottom-right-radius: var(--trellis-border-rad);
+  border-bottom-left-radius: var(--trellis-border-rad);
+  margin-top: calc(var(--trellis-nub-height) / 2);
+}
+
+#trellis-left, #trellis-right {
+  width: var(--trellis-nub-width);
+  height: var(--trellis-nub-height);
+  background: black;
+  position: absolute;
+  top: calc(var(--trellis-nub-height) * -1);
+  border-top-right-radius: var(--trellis-border-rad);
+  border-top-left-radius: var(--trellis-border-rad);
+}
+
+#trellis-left-out, #trellis-right-out {
+  position: absolute;
+  top: calc(var(--trellis-nub-out) * -1);
+  width: var(--trellis-nub-out);
+  height: var(--trellis-nub-out);
+  background: var(--bg-color);
+}
+
+#trellis-left-in, #trellis-right-in {
+  width: var(--trellis-nub-in);
+  height: var(--trellis-nub-in);
+  position: absolute;
+  bottom: 0;
+  background: black;
+  z-index: -1;
+}
+
+#trellis-right-in {
+  right: 0;
+}
+
+#trellis-left-out {
+  left: var(--trellis-nub-width);
+  border-bottom-left-radius: var(--trellis-border-rad);
+}
+
+#trellis-right-out {
+  right: var(--trellis-nub-width);
+  border-bottom-right-radius: var(--trellis-border-rad);
+}
+
+#trellis-right {
+  right: 0;
+}
+
+#trellis-btns {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--btn);
+  padding-top: var(--q-btn);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  width: var(--btn);
+  height: var(--btn);
+  display: inline-block;
+  background: red;
+  border-radius: calc(var(--q-btn) / 2);
+  cursor: pointer;
+  transition: all 150ms;
+  outline: none;
+}
+
+.btn:hover, .playing {
+  transform: scale(1.05);
+  background: yellow!important;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
